@@ -15,14 +15,16 @@ const statsFile = path.resolve('./build/spa/loadable-stats.json');
 
 const app = express();
 
+app.use(compression());
+
 app.get('*.js', (req, res, next) => {
   req.url = req.url + '.gz';
   res.set('Content-Encoding', 'gzip');
+  res.set('Content-Type', 'text/plain');
   next();
 });
 
 app.use(express.static('build/spa'));
-app.use(compression());
 
 app.get('*', (req, res, next) => {
   const extractor = new ChunkExtractor({
