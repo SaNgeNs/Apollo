@@ -90,7 +90,7 @@ module.exports = [
         defaultSizes: 'gzip',
         analyzerMode: 'server', // 'disabled'
       }),
-      prodEnv ? new CompressionPlugin() : () => {},
+      new CompressionPlugin(),
       new LoadablePlugin(),
     ],
   },
