@@ -86,7 +86,7 @@ module.exports = [
       ],
     },
     plugins: [
-      new BundleAnalyzerPlugin({
+      prodEnv ? () => {} : new BundleAnalyzerPlugin({
         defaultSizes: 'gzip',
         analyzerMode: 'server', // 'disabled'
       }),
