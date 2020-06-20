@@ -10,6 +10,7 @@ import fetch from 'node-fetch';
 import { apolloClient } from 'ApolloClient';
 import App from 'Components/App';
 
+const serverPort = process.env.PORT || 3006;
 const path = require('path');
 const statsFile = path.resolve('./build/spa/loadable-stats.json');
 
@@ -73,6 +74,6 @@ app.get('*', (req, res, next) => {
   });
 });
 
-app.listen(3006, () => {
-  console.log('Server on port 3006');
+app.listen(serverPort, () => {
+  console.log(`Server on port ${serverPort}`);
 });
