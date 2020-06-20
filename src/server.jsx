@@ -26,7 +26,7 @@ app.get('*.js', (req, res, next) => {
 app.use(express.static('build/spa'));
 app.use(compression());
 
-app.get('*', (req, res) => {
+app.get('*', (req, res, next) => {
   const extractor = new ChunkExtractor({
     statsFile,
   });
@@ -69,9 +69,7 @@ app.get('*', (req, res) => {
     `);
     res.end();
   }).catch((error) => {
-    res.status(404);
-    res.send(error);
-    res.end();
+    next(error);
   });
 });
 
