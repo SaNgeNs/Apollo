@@ -103,7 +103,7 @@ module.exports = [
     externals: [webpackNodeExternals()],
     output: {
       path: buildPath,
-      filename: 'index.js',
+      filename: 'server.js',
       chunkFilename: '[name].ssr.chunk.[contenthash].js',
     },
     module: {
@@ -119,7 +119,7 @@ module.exports = [
     plugins: [
       new NodemonPlugin({
         watch: buildPath,
-        script: path.join(buildPath, 'index.js'),
+        script: path.join(buildPath, 'server.js'),
       }),
     ],
   }
