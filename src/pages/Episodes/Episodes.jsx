@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Loading from 'Components/Loading';
 import Error from 'Components/Error';
 import ListCharacters from 'Components/ListCharacters';
