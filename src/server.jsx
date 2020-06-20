@@ -26,7 +26,7 @@ app.get('*.js', (req, res, next) => {
 app.use(express.static('build/spa'));
 app.use(compression());
 
-app.get('*', (req, res, next) => {
+app.get('*', (req, res) => {
   const extractor = new ChunkExtractor({
     statsFile,
   });
