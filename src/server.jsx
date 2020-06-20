@@ -69,7 +69,9 @@ app.get('*', (req, res, next) => {
     `);
     res.end();
   }).catch((error) => {
-    next(error);
+    res.status(404);
+    res.send(error);
+    res.end();
   });
 });
 
