@@ -23,7 +23,7 @@ const extensions = ['.js', '.jsx'];
 
 module.exports = [
   {
-    name: "browser",
+    name: "client",
     target: 'web',
     entry: {
       main: './src/client.jsx',
@@ -95,7 +95,7 @@ module.exports = [
     ],
   },
   {
-    name: 'ssr',
+    name: 'server',
     target: 'node',
     entry: {
       main: './src/server.jsx',
