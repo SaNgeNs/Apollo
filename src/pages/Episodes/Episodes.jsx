@@ -4,7 +4,7 @@ import Loading from 'Components/Loading';
 import Error from 'Components/Error';
 import ListCharacters from 'Components/ListCharacters';
 import Pagination from 'Components/Pagination';
-import GetEpisodes from './queries/GetEpisodes';
+import GET_EPISODES from 'Queries/GetEpisodes';
 import {
   content,
   title,
@@ -23,7 +23,11 @@ export const Episodes = (props) => {
   const searchParams = new URLSearchParams(search);
   const queryPage = searchParams.get('page') || 1;
 
-  const { error, loading, data } = useQuery(GetEpisodes(queryPage));
+  const { error, loading, data } = useQuery(GET_EPISODES, {
+    variables: {
+      page: Number(queryPage),
+    },
+  });
 
   if (loading) return <Loading />;
   if (error) return <Error />;

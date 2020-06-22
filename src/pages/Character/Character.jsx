@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Loading from 'Components/Loading';
 import Error from 'Components/Error';
-import GetCharacter from './queries/GetCharacter';
+import GET_CHARACTER from 'Queries/GetCharacter';
 import {
   content,
   text,
@@ -24,7 +24,11 @@ export const Character = (props) => {
     },
   } = props;
 
-  const { error, loading, data } = useQuery(GetCharacter(id));
+  const { error, loading, data } = useQuery(GET_CHARACTER, {
+    variables: {
+      id,
+    },
+  });
 
   if (loading) return <Loading />;
   if (error) return <Error />;

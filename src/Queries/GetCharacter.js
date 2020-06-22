@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-export const GetCharacter = (id) => (
-  gql`{
-    character(id: ${id}) {
+export const GetCharacter = gql`
+  query($id: ID!) {
+    character(id: $id) {
       id
       name
       status
@@ -22,7 +22,7 @@ export const GetCharacter = (id) => (
         }
       }
     }
-  }`
-);
+  }
+`;
 
 export default GetCharacter;

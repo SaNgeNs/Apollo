@@ -16,6 +16,7 @@ module.exports = (api) => {
           root: ['/'],
           alias: {
             Src: path(baseDir, 'src/'),
+            Queries: path(baseDir, 'src/Queries'),
             Components: path(baseDir, 'src/components/'),
             Pages: path(baseDir, 'src/pages/'),
             Routes: path(baseDir, 'src/routes/'),
