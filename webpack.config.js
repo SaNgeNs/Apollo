@@ -31,8 +31,8 @@ module.exports = [
     output: {
       path: `${buildPath}/spa`,
       publicPath: '/',
-      chunkFilename: '[name].spa.chunk.[contenthash].js',
-      filename: '[name].spa.bundle.[contenthash].js',
+      chunkFilename: 'js/chunks/[name]/spa.chunk.[contenthash].js',
+      filename: 'js/bundles/[name]/spa.bundle.[contenthash].js',
     },
     module: {
       rules: [

@@ -14,17 +14,26 @@ const serverPort = process.env.PORT || 3006;
 const path = require('path');
 const statsFile = path.resolve('./build/spa/loadable-stats.json');
 
+const minify = require('express-minify');
+const uglifyEs = require('uglify-es');
+
 const app = express();
 
 app.get('*.js', (req, res, next) => {
   req.url = req.url + '.gz';
   res.set('Content-Encoding', 'gzip');
-  res.set('Content-Type', 'text/plain');
+  res.set('Content-Type', 'text/javascript');
   next();
 });
 
-app.use(express.static('build/spa'));
 app.use(compression());
+app.use(minify({
+  cache: false,
+  uglifyJsModule: uglifyEs,
+  errorHandler: null,
+  jsMatch: /js/,
+}));
+app.use(express.static('build/spa'));
 
 app.get('*', (req, res, next) => {
   const extractor = new ChunkExtractor({
@@ -51,7 +60,7 @@ app.get('*', (req, res, next) => {
     const scriptTags = extractor.getScriptTags();
 
     res.status(200);
-    res.write(`
+    res.send(`
        <!doctype html>
        <html lang="en">
         <head>
